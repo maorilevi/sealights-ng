@@ -20,9 +20,11 @@ export const getAllCountriesSuccess = createAction(GET_ALL_COUNTRIES_SUCCESS, (c
 export const getAllCountriesFailure = createAction(GET_ALL_COUNTRIES_FAILURE, (error: any) => ({error}));
 
 export const getAllCitiesByCountry = createAction(GET_ALL_CITIES_BY_COUNTRY, (countryId: string) => ({countryId}));
-export const getAllCitiesByCountrySuccess = createAction(GET_ALL_CITIES_BY_COUNTRY_SUCCESS, (countryId: string, cities: City[]) => ({countryId, cities}));
+export const getAllCitiesByCountrySuccess = createAction(GET_ALL_CITIES_BY_COUNTRY_SUCCESS, (countryId: string, cities: City[]) => ({
+  countryId,
+  cities
+}));
 export const getAllCitiesByCountryFailure = createAction(GET_ALL_CITIES_BY_COUNTRY_FAILURE, (error: any) => ({error}));
-
 
 export const addCity = createAction(ADD_CITY, (city: City) => ({city}));
 

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -22,7 +22,7 @@ class DialogData {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddCityComponent implements OnInit {
+export class AddCityComponent {
   newCityForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
   })
@@ -31,8 +31,6 @@ export class AddCityComponent implements OnInit {
     public dialogRef: MatDialogRef<AddCityComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {country: string, countryId: string}) { }
 
-  ngOnInit(): void {
-  }
   get title(): string {
     return `Add City ${this.data?.country ?? ''}`;
   }

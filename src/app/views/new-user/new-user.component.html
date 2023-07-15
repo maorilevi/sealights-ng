@@ -37,7 +37,11 @@
 
   </div>
   <div class="wrapper__actions">
-    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="!currentPersonId" (click)="addUser()">Save</button>
-    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="currentPersonId" (click)="updateUser()">Update</button>
+    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="!currentPersonId" (click)="addUser()">
+      Save
+    </button>
+    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="currentPersonId" (click)="updateUser()">
+      Update
+    </button>
   </div>
 </form>

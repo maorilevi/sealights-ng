@@ -35,8 +35,8 @@ export class PersonsEffects {
       ofType(PersonsAction.updatePerson),
       switchMap((action) =>
         this.personsService.update(action.person).pipe(map((person) => {
-            return PersonsAction.updatePersonSuccess(person);
-          }), catchError(error => of(PersonsAction.updatePersonFailure(error))))
+          return PersonsAction.updatePersonSuccess(person);
+        }), catchError(error => of(PersonsAction.updatePersonFailure(error))))
       ))
   );
   readonly deletePerson$ = createEffect(() =>

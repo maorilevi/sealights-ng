@@ -4,8 +4,9 @@ import {PersonsFacadeService} from "../../store/persons/persons-facade.service";
 import {BehaviorSubject, filter, Subject, Subscription, takeUntil} from "rxjs";
 import {Address} from "@models/address.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import {Person} from "@models/person.model";
+
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -114,12 +115,15 @@ export class NewUserComponent implements OnInit, OnDestroy {
     this.address$.next(this.address$.value.filter((address, i) => address.uuid !== uuid));
     this.ref.detectChanges();
   }
+
   public get atListOneAddress(): boolean {
     return this.address$.value.length > 0;
   }
+
   public get btnIsDisabled(): boolean {
     return this.userForm.invalid || !this.atListOneAddress;
   }
+
   public updateUser(): void {
     const formValue = this.userForm.getRawValue();
     const user = {

@@ -27,14 +27,16 @@ export class AddressFacadeService {
       })
     );
   }
+
   public addCity(city: City): void {
     this.store.pipe(
       select(selectAddressState),
       take(1),
       tap((state: AddressState) => this.dispatchGetCountriesIfNotLoaded(state)),
       map((state: AddressState) => this.store.dispatch(addCity(city))
-    )).subscribe();
+      )).subscribe();
   }
+
   public getCitiesByCountryId$(id: string): Observable<City[]> {
     return this.store.pipe(
       select(selectAddressState),
@@ -45,6 +47,7 @@ export class AddressFacadeService {
       })
     );
   }
+
   private dispatchGetCountriesIfNotLoaded(state: AddressState): void {
     if (this.isFetchCountryNeeded(state)) {
       this.store.dispatch(getAllCountries());

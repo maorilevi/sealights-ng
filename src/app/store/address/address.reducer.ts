@@ -1,13 +1,14 @@
 import {Country} from "@models/country.model";
 import {createReducer, on} from "@ngrx/store";
 import * as AddressActions from './address.actions';
-import {City} from "@models/city.model";
+
 export interface CountryState {
   country: Country;
   isLoading: boolean;
   hasLoaded: boolean;
   error: any;
 }
+
 export interface AddressState {
   countries: Map<string, CountryState>;
   isLoading: boolean;
@@ -73,10 +74,12 @@ export const reducer = createReducer(
     if (state.countries.has(action.countryId)) {
       const countryState = state.countries.get(action.countryId);
       if (!!countryState?.country && !!countryState?.country?.cities) {
-        state.countries.set(action.countryId, {...countryState, country: {
+        state.countries.set(action.countryId, {
+          ...countryState, country: {
             ...countryState.country,
             cities: action.cities
-          }});
+          }
+        });
       }
     }
     return {
