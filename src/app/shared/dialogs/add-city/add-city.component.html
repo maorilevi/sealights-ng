@@ -1,0 +1,15 @@
+<div>
+  <form [formGroup]="newCityForm">
+    <h1>{{title}}</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <div>
+      <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+      <button mat-raised-button (click)="onSave()">ok</button>
+
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <img src="assets/empty-state.jpg" alt="" class="wrapper__image">
+  <div class="wrapper__content">
+    <h3 *ngIf="title">{{ title }}</h3>
+    <p *ngIf="description">{{ description }}</p>
+    <a *ngIf="action && action.link && action.title" [routerLink]="[action.link]">{{action.title}}</a>
+  </div>
+</div>

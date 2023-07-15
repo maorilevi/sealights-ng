@@ -1,0 +1,43 @@
+<form [formGroup]="userForm" class="wrapper">
+  <h3>Personal info</h3>
+  <div class="wrapper__person-info" *ngIf="userForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="datepicker" formControlName="birthdate">
+      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div formGroupName="address" class="wrapper__addresses">
+    <div class="wrapper__addresses__create-card" (click)="addAddress()">
+      <mat-icon>add</mat-icon>
+      <div>
+        <h4>Create a new address</h4>
+      </div>
+    </div>
+    <ng-container *ngIf="addressControls">
+      <ng-container *ngFor="let address of address$ | async, let index = index; trackBy:identify">
+        <app-address
+          (removeAddress)="removeAddress(address.uuid)"
+          [addressForm]="addressControls[address.uuid]">
+        </app-address>
+      </ng-container>
+    </ng-container>
+
+
+  </div>
+  <div class="wrapper__actions">
+    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="!currentPersonId" (click)="addUser()">Save</button>
+    <button mat-raised-button type="button" [disabled]="btnIsDisabled" *ngIf="currentPersonId" (click)="updateUser()">Update</button>
+  </div>
+</form>

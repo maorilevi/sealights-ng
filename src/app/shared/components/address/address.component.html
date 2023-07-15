@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="wrapper__header">
+    <button type="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onAddNewCityClicked()" [disabled]="addCityButtonDisabled">
+        <span>Add City</span>
+      </button>
+      <button mat-menu-item (click)="onRemoveAddressClicked()">
+        <span>Remove Address</span>
+      </button>
+    </mat-menu>
+  </div>
+  <div class="wrapper__details">
+    <mat-form-field appearance="outline" *ngIf="nameControl">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [formControl]="nameControl">
+    </mat-form-field>
+    <mat-form-field appearance="outline" *ngIf="countryControl">
+      <mat-label>Select country</mat-label>
+      <mat-select [formControl]="countryControl" (selectionChange)="onCountrySelected($event)">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let country of countries$ | async" [value]="country.id">
+          {{country.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" *ngIf="cityControl">
+        <mat-label>Select city</mat-label>
+        <mat-select [formControl]="cityControl">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let city of currentCities$ | async" [value]="city.id">
+            {{city.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" *ngIf="streetControl">
+      <mat-label>Street</mat-label>
+      <input matInput placeholder="Street" [formControl]="streetControl">
+    </mat-form-field>
+  </div>
+</div>

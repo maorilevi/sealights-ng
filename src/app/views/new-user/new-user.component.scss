@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 20px;
+  &__person-info {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+  &__addresses {
+    display: flex;
+    gap: 18px;
+    &__create-card {
+      height: 370px;;
+      border: 1px solid lightgray;
+      border-radius: 8px;
+      width: 242px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 1px 1px 5px 1px lightgray;
+      }
+    }
+  }
+}
