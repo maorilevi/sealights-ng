@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {PersonsFacadeService} from "../../store/persons/persons-facade.service";
+import {PersonsFacadeService} from "@store/persons/persons-facade.service";
 import {BehaviorSubject, filter, Subject, Subscription, takeUntil} from "rxjs";
 import {Address} from "@models/address.model";
 import {ActivatedRoute, Router} from "@angular/router";

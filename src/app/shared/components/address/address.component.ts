@@ -6,7 +6,7 @@ import {
   OnDestroy,
   Output
 } from '@angular/core';
-import {AddressFacadeService} from "../../../store/address/address-facade.service";
+import {AddressFacadeService} from "@store/address/address-facade.service";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -16,7 +16,7 @@ import {BehaviorSubject, Observable, Subject, takeUntil, tap} from "rxjs";
 import {City} from "@models/city.model";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
-import {AddCityComponent} from "../../dialogs/add-city/add-city.component";
+import {AddCityComponent} from "@dialogs/add-city/add-city.component";
 import {MatOption} from "@angular/material/core";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject, takeUntil} from "rxjs";
 import {Person} from "@models/person.model";
-import {PersonsFacadeService} from "../../store/persons/persons-facade.service";
+import {PersonsFacadeService} from "@store/persons/persons-facade.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

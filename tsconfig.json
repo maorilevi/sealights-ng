@@ -29,6 +29,18 @@
       "@services/*": [
         "src/app/services/*"
       ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@store/*": [
+        "src/app/store/*"
+      ],
+      "@dialogs/*": [
+        "src/app/shared/dialogs/*"
+      ],
+      "@components/*": [
+        "src/app/shared/components/*"
+      ],
     }
   },
   "angularCompilerOptions": {

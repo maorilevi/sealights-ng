@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {AddressFacadeService} from "../../../store/address/address-facade.service";
+import {AddressFacadeService} from "@store/address/address-facade.service";
 
 class DialogData {
 }
