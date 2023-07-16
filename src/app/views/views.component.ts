@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ALL_USERS_LINK} from "@utils/routs.links";
 
 @Component({
   selector: 'app-views',
@@ -6,11 +7,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['./views.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ViewsComponent implements OnInit {
+export class ViewsComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  protected readonly ALL_USERS_LINK = ALL_USERS_LINK;
 }

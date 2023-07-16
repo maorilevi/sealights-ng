@@ -11,7 +11,14 @@
       </ng-container>
       <ng-container matColumnDef="birthdate">
         <mat-header-cell *matHeaderCellDef> Birthdate </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.birthdate}} </mat-cell>
+        <mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element?.birthdate; else noneBirthDateTemplate">
+            {{element.birthdate | date:"MM/dd/yy"}}
+          </ng-container>
+          <ng-template #noneBirthDateTemplate>
+            --
+          </ng-template>
+        </mat-cell>
       </ng-container>
       <ng-container matColumnDef="addressCount">
         <mat-header-cell *matHeaderCellDef> Address count </mat-header-cell>
@@ -24,7 +31,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['/home/users', element.id]">Edit</button>
+            <button mat-menu-item [routerLink]="[ALL_USERS_LINK, element.id]">Edit</button>
             <button mat-menu-item (click)="deleteUser(element.id)">Delete</button>
           </mat-menu>
         </mat-cell>
@@ -32,7 +39,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <a [routerLink]="['/home/users/new']">new user</a>
+    <a [routerLink]="[NEW_USER_LINK]">new user</a>
   </ng-container>
   <ng-template #emptyStateTemplate>
     <app-empty-state

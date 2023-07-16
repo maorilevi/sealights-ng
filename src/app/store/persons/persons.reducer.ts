@@ -22,13 +22,19 @@ export const initialPersonsState: PersonsState = {
   hasLoaded: false,
   error: null
 }
-
+const initBirthDate = (person: Person): string | null => {
+  return person?.birthdate && person?.birthdate !== 'NA' ? person.birthdate : null;
+}
 export const reducer = createReducer(
   initialPersonsState,
   on(getPersons, (state) => ({...state, isLoading: true})),
   on(getPersonsSuccess, (state, {persons}) => ({
     ...state,
-    persons: new Map(persons.map(person => [person.id.toString(), {...person, addressCount: person.addresses.length}])),
+    persons: new Map(persons.map(person => [person.id.toString(), {
+      ...person,
+      addressCount: person.addresses.length,
+      birthdate: initBirthDate(person)
+    }])),
     isLoading: false,
     hasLoaded: true
   })),

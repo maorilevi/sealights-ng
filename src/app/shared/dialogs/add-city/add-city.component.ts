@@ -6,9 +6,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {AddressFacadeService} from "@store/address/address-facade.service";
 
-class DialogData {
-}
-
 @Component({
   selector: 'app-add-city',
   templateUrl: './add-city.component.html',
@@ -31,11 +28,11 @@ export class AddCityComponent {
     public dialogRef: MatDialogRef<AddCityComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {country: string, countryId: string}) { }
 
-  get title(): string {
+  public get title(): string {
     return `Add City ${this.data?.country ?? ''}`;
   }
 
-  onSave() {
+  public onSave() {
     const newCity = {
       ...this.newCityForm.getRawValue(),
       countryId: this.data?.countryId

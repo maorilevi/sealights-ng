@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {RouterLinkWithHref} from "@angular/router";
 
@@ -10,13 +10,9 @@ import {RouterLinkWithHref} from "@angular/router";
   imports: [CommonModule, RouterLinkWithHref],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EmptyStateComponent implements OnInit {
+export class EmptyStateComponent {
   @Input() title!: string;
   @Input() description!: string;
   @Input() action: { title: string; link: string } | undefined;
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

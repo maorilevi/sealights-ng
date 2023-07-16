@@ -3,7 +3,7 @@ import {Address} from "@models/address.model";
 export interface Person {
   id: string;
   name: string;
-  birthdate: Date;
+  birthdate: string | null;
   addresses: Address[];
   addressCount?: number;
 }

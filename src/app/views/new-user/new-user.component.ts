@@ -6,6 +6,7 @@ import {Address} from "@models/address.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {v4 as uuidv4} from 'uuid';
 import {Person} from "@models/person.model";
+import {ALL_USERS_LINK} from "@utils/routs.links";
 
 @Component({
   selector: 'app-new-user',
@@ -96,10 +97,11 @@ export class NewUserComponent implements OnInit, OnDestroy {
     const formValue = this.userForm.getRawValue();
     const user = {
       ...formValue,
+      birthdate: this.isValidDate(formValue.birthdate) ? formValue.birthdate : null,
       addresses: Object.keys(formValue.addresses).map(key => formValue.addresses[key])
     }
     this.personsFacadeService.createPerson(user);
-    this.router.navigate(['/home/users']);
+    this.router.navigate([ALL_USERS_LINK]);
   }
 
   public ngOnDestroy(): void {
@@ -124,11 +126,16 @@ export class NewUserComponent implements OnInit, OnDestroy {
     return this.userForm.invalid || !this.atListOneAddress;
   }
 
+  private isValidDate(d: any): boolean {
+    return d instanceof Date && !isNaN(d as any);
+  }
+
   public updateUser(): void {
     const formValue = this.userForm.getRawValue();
     const user = {
       id: this.currentPersonId,
       ...formValue,
+      birthdate: this.isValidDate(formValue.birthdate) ? formValue.birthdate : null,
       addresses: Object.keys(formValue.addresses).map(key => formValue.addresses[key])
     }
     this.personsFacadeService.updatePerson(user);

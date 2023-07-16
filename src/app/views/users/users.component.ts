@@ -3,6 +3,7 @@ import {Observable, Subject, takeUntil} from "rxjs";
 import {Person} from "@models/person.model";
 import {PersonsFacadeService} from "@store/persons/persons-facade.service";
 import {ActivatedRoute} from "@angular/router";
+import {ALL_USERS_LINK, NEW_USER_LINK} from "@utils/routs.links";
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class UsersComponent implements OnInit, OnDestroy {
   private destroy$: Subject<boolean> = new Subject<boolean>();
+  protected readonly NEW_USER_LINK = NEW_USER_LINK;
+  protected readonly ALL_USERS_LINK = ALL_USERS_LINK;
+
   displayedColumns: string[] = ['id', 'name', 'birthdate', 'addressCount', 'actions']
   dataSource$!: Observable<Person[]>;
   emptyState = {
@@ -19,7 +23,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     description: 'Add users to populate the table.',
     action: {
       title: 'click here to add a user',
-      link: '/home/users/new'
+      link: this.NEW_USER_LINK
     }
   }
   constructor(

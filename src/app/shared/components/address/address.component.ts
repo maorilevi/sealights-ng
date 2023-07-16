@@ -64,7 +64,7 @@ export class AddressComponent implements OnDestroy, AfterViewInit {
       width: '250px',
       data: {
         country: this.currentCountryName$.value,
-        countryId: this.cityControl?.value
+        countryId: this.countryControl?.value
       }
     })
   }
@@ -94,7 +94,7 @@ export class AddressComponent implements OnDestroy, AfterViewInit {
   }
 
   private triggerFirstSelectFromExisting(): void {
-    if (this.addressForm && this.countryControl?.value && this.cityControl?.value) {
+    if (this.addressForm && this.countryControl?.value) {
       this.countryControl?.setValue(this.countryControl?.value);
     }
   }
