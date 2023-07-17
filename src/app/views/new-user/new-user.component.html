@@ -31,6 +31,7 @@
           (removeAddress)="removeAddress(address.uuid)"
           [addressForm]="addressControls[address.uuid]">
         </app-address>
+        <app-address-v2 [formControl]="addressControls[address.uuid]"></app-address-v2>
       </ng-container>
     </ng-container>
 

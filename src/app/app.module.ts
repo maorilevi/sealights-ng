@@ -12,7 +12,7 @@ import * as fromApp from "./store/app.reducer";
 import {PersonsEffects} from "./store/persons/persons.effects";
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
